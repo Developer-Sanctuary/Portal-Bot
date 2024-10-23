@@ -23,7 +23,7 @@ Developer - [CosmicPredator](https://github.com/CosmicPredator)
 
 ---
 
-> ![NOTE]
+> [!NOTE]
 > You can also edit some of the settings in `appsettings.json`
 
 ---
