@@ -3,6 +3,8 @@ A Teleportation helper handcrafted specially for Developer Sanctuary Server
 
 Developer - [CosmicPredator](https://github.com/CosmicPredator)
 
+---
+
 > [!IMPORTANT]
 > .NET SDK 8.0+ required
 
@@ -19,7 +21,11 @@ Developer - [CosmicPredator](https://github.com/CosmicPredator)
     ```
 5. Now Run `Portal.Bot.exe` and enjoy.
 
-> ![Note]
+---
+
+> ![NOTE]
 > You can also edit some of the settings in `appsettings.json`
+
+---
 
 ### #Glory to CPP
