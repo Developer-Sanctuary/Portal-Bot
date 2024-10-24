@@ -26,14 +26,18 @@ public class BotService(DiscordSocketClient discordSocketClient,
 
         discordSocketClient.Ready += async () =>
         {
-            // Setting up slash commands and context commands
-            ulong guildId = Convert.ToUInt64(configuration["Bot:GuildId"]);
-            var guild = discordSocketClient.GetGuild(guildId);
-            await guild.BulkOverwriteApplicationCommandAsync(new ApplicationCommandProperties[]
+            _ = Task.Run(async () =>
             {
-                AddContextCommand().Build()
-            });
-            await interactionService.RegisterCommandsToGuildAsync(guildId);
+                // Setting up slash commands and context commands
+                ulong guildId = Convert.ToUInt64(configuration["Bot:GuildId"]);
+                var guild = discordSocketClient.GetGuild(guildId);
+                await guild.BulkOverwriteApplicationCommandAsync(new ApplicationCommandProperties[]
+                {
+                    AddContextCommand().Build()
+                });
+                await interactionService.RegisterCommandsToGuildAsync(guildId);
+            }, cancellationToken);
+            await Task.CompletedTask;
         };
 
         // Starting discord socket client

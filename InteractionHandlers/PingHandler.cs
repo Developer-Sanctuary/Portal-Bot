@@ -13,4 +13,10 @@ public class PingHandler : InteractionModuleBase<SocketInteractionContext>
     {
         await RespondAsync(embed: new PongEmbed(Context.Client.Latency).Build(), ephemeral: true);
     }
+
+    [SlashCommand("help", "Displays help message")]
+    public async Task HandleHelpAsync()
+    {
+        await RespondAsync(embed: new HelpEmbed().Build(), ephemeral: true);
+    }
 }

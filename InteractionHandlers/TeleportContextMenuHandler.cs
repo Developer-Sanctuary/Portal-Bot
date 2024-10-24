@@ -42,7 +42,7 @@ public class TeleportContextMenuHandler(
         if (!helper.IsChannelExcluded(rxChannel, Context.Guild, dbContext))
         {
             await (rxChannel as ISocketMessageChannel)!.SendMessageAsync(
-                embed: new RxPortalEmbed((Context.Channel as SocketGuildChannel)!, Context.Guild, message as SocketMessage).Build());
+                embed: new RxPortalEmbed(Context.Channel, Context.Guild, message).Build());
         }
         await RespondAsync(embed: new TxPortalEmbed(rxChannel, Context.Guild).Build());
         await helper.LogToLogChannelAsync(Context.Guild, Context.Channel.Id, rxChannel.Id);
