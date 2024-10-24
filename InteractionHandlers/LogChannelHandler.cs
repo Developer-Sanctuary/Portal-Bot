@@ -3,7 +3,7 @@ using Discord.Interactions;
 using Discord.WebSocket;
 using Portal.DB;
 
-namespace Portal.CommandHandlers;
+namespace Portal.InteractionHandlers;
 
 [RequireUserPermission(GuildPermission.Administrator)]
 public class LogChannelHandler(BotDbContext dbContext) : InteractionModuleBase<SocketInteractionContext>

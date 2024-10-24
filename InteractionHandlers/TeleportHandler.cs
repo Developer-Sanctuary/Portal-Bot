@@ -6,7 +6,7 @@ using Portal.DB;
 using Portal.Embeds;
 using Portal.Helpers;
 
-namespace Portal.CommandHandlers;
+namespace Portal.InteractionHandlers;
 
 public class TeleportHandler(BotDbContext dbContext, Helper helper) : InteractionModuleBase<SocketInteractionContext>
 {

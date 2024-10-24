@@ -6,7 +6,7 @@ using Portal.DB;
 using Portal.Embeds;
 using Portal.Helpers;
 
-namespace Portal.CommandHandlers;
+namespace Portal.InteractionHandlers;
 
 public class TeleportContextMenuHandler(
     BotDbContext dbContext, Helper helper) : InteractionModuleBase<SocketInteractionContext>
@@ -42,7 +42,7 @@ public class TeleportContextMenuHandler(
         if (!helper.IsChannelExcluded(rxChannel, Context.Guild, dbContext))
         {
             await (rxChannel as ISocketMessageChannel)!.SendMessageAsync(
-                embed: new RxPortalEmbed((Context.Channel as SocketGuildChannel)!, Context.Guild, message.Content ?? "").Build());
+                embed: new RxPortalEmbed((Context.Channel as SocketGuildChannel)!, Context.Guild, message as SocketMessage).Build());
         }
         await RespondAsync(embed: new TxPortalEmbed(rxChannel, Context.Guild).Build());
         await helper.LogToLogChannelAsync(Context.Guild, Context.Channel.Id, rxChannel.Id);

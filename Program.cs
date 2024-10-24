@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Discord.Commands;
 using Discord.Interactions;
 using Discord.WebSocket;
 using Portal.DB;
@@ -27,7 +28,7 @@ public class Program
 
         DiscordSocketConfig discordSocketConfig = new()
         {
-            GatewayIntents = GatewayIntents.Guilds,
+            GatewayIntents = GatewayIntents.Guilds | GatewayIntents.GuildMessages | GatewayIntents.MessageContent,
             LogGatewayIntentWarnings = false,
             LogLevel = LogSeverity.Debug
         };
@@ -43,7 +44,9 @@ public class Program
                     .AddSingleton<DiscordSocketClient>()
                     .AddSingleton(provider => 
                         new InteractionService(provider.GetRequiredService<DiscordSocketClient>()))
+                    .AddSingleton<CommandService>()
                     .AddSingleton<InteractionHandler>()
+                    .AddSingleton<CommandHandler>()
                     .AddTransient<Helper>();
                 serviceCollection.AddHostedService<BotService>();
                 Log.Debug("Added dependencies to ServiceCollection");

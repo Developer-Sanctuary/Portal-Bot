@@ -2,7 +2,7 @@
 using Discord.Interactions;
 using Portal.Embeds;
 
-namespace Portal.CommandHandlers;
+namespace Portal.InteractionHandlers;
 
 [RequireUserPermission(GuildPermission.Administrator)]
 public class PingHandler : InteractionModuleBase<SocketInteractionContext>

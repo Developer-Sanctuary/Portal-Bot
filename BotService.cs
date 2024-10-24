@@ -1,4 +1,5 @@
 ﻿using Discord;
+using Discord.Commands;
 using Discord.Interactions;
 using Discord.WebSocket;
 using Microsoft.Extensions.Configuration;
@@ -9,13 +10,18 @@ namespace Portal;
 public class BotService(DiscordSocketClient discordSocketClient,
     InteractionService interactionService,
     InteractionHandler interactionHandler,
+    CommandService commandService,
+    CommandHandler commandHandler,
     IConfiguration configuration) : IHostedService
 {
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         CustomBotLogger customBotLogger = new();
         await interactionHandler.InitializeAsync();
+        await commandHandler.InstallCommandsAsync();
+        
         interactionService.Log += customBotLogger.BotLogger;
+        commandService.Log += customBotLogger.BotLogger;
         discordSocketClient.Log += customBotLogger.BotLogger;
 
         discordSocketClient.Ready += async () =>

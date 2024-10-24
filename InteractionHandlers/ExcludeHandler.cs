@@ -3,7 +3,7 @@ using Discord.Interactions;
 using Portal.DB;
 using Microsoft.EntityFrameworkCore;
 
-namespace Portal.CommandHandlers;
+namespace Portal.InteractionHandlers;
 
 [RequireUserPermission(GuildPermission.Administrator)]
 public class ExcludeHandler(BotDbContext dbContext): InteractionModuleBase<SocketInteractionContext>
