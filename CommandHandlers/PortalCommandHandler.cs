@@ -13,8 +13,9 @@ public class PortalCommandHandler(BotDbContext dbContext,
     [Command("teleport")]
     [Alias("portal", "tp")]
     [Summary("Opens a portal from current rxChannel to provided rxChannel")]
-    public async Task HandleTeleport(SocketGuildChannel rxChannel)
+    public async Task HandleTeleport(SocketGuildChannel Channel)
     {
+        var rxChannel = Channel;
         if (rxChannel.Id == Context.Channel.Id)
         {
             await Context.Message.ReplyAsync(
