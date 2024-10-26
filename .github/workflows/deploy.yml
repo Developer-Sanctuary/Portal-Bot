@@ -26,11 +26,6 @@ jobs:
       - name: Deploy Bot
         run: |
           sudo cp -r output /home/firesteel/Bots/Portal/
-          sudo systemctl start portal-bot
-
-      - name: Deploy Bot
-        run: |
-          sudo cp -r output /home/firesteel/Bots/Portal/
 
       - name: Pass Discord Bot Token
         env:
