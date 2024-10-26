@@ -4,9 +4,6 @@ on: # Trigger when a pull request or commit has been pushed to the "production" 
   push:
     branches:
       - production
-  pull_request:
-    branches:
-      - production
 
 jobs:
   deploy:
