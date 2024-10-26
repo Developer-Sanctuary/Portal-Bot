@@ -9,16 +9,7 @@ on: # Trigger when a pull request or commit has been pushed to the "production" 
       - production
 
 jobs:
-  request-approval: # Request approval before deploying
-    runs-on: ubuntu-latest
-    steps:
-      - name: Request Approval
-        uses: hmarr/auto-approve-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-
   deploy:
-    needs: request-approval
     runs-on: self-hosted
     steps:
       - name: Checkout Code
