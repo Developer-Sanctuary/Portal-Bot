@@ -13,8 +13,9 @@ public class TeleportHandler(BotDbContext dbContext, Helper helper) : Interactio
     // /teleport - this command does the main teleportation things and opening
     // and closing of portals
     [SlashCommand("teleport", "Opens a portal from current channel to provided rxChannel")]
-    public async Task HandleTeleport([Name("channel")]SocketGuildChannel rxChannel)
+    public async Task HandleTeleport([Name("channel")]SocketGuildChannel Channel)
     {
+        var rxChannel = Channel;
         if (rxChannel.Id == Context.Channel.Id)
         {
             await RespondAsync("You can't open portal in the same rxChannel...!", ephemeral: true);
