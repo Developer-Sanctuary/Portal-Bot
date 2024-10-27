@@ -1,9 +1,7 @@
 name: Deploy Portal Bot to Raspberry Pi 5
 
 on: # Trigger on a push to the "production" branch
-  push:
-    branches:
-      - production
+   workflow_dispatch:
 
 jobs:
   deploy:
