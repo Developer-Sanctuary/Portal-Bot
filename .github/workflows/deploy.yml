@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: firesteel
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
